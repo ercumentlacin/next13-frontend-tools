@@ -14,7 +14,7 @@ export default async function ToolCard({ tool }: ToolCardProps) {
   const currentUser = await getCurrentUser();
   return (
     <li
-      className="flex flex-col gap-4 p-4 rounded shadow-sm shadow-neutral-focus grow"
+      className="flex flex-col w-full gap-4 p-4 rounded shadow-sm shadow-neutral-focus grow"
       key={tool.id}
     >
       <h3 className="text-2xl leading-3 capitalize text-primary-content">
