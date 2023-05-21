@@ -20,7 +20,9 @@ export default async function RootLayout({
       <body>
         <NextAuthProvider>
           <Menu currentUser={currentUser} />
-          {children}
+          <div className="flex flex-col items-start justify-start min-h-screen px-4 pt-20">
+            {children}
+          </div>
         </NextAuthProvider>
       </body>
     </html>
