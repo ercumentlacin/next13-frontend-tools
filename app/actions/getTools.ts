@@ -1,14 +1,34 @@
-export default async function getTools() {
+export default async function getTools({
+  limit = 6,
+  skip = 0,
+}: {
+  limit?: number;
+  skip?: number;
+}) {
   "use server";
   const tools = await prisma.tool.findMany({
     orderBy: {
       createdAt: "desc",
     },
-    skip: 0,
-    take: 10,
     include: {
       author: true,
     },
+    skip: skip,
+    take: limit,
   });
-  return tools;
+  const totalCount = await prisma.tool.count();
+  const pageCount = Math.ceil((await prisma.tool.count()) / limit);
+  const currentPage = Math.ceil(skip / limit) + 1;
+
+  const haveNextPage = currentPage < pageCount;
+  const havePreviousPage = currentPage > 1;
+
+  return {
+    tools,
+    totalCount,
+    pageCount,
+    currentPage,
+    haveNextPage,
+    havePreviousPage,
+  };
 }
