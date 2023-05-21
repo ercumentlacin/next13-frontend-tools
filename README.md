@@ -1,34 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Tools
 
-## Getting Started
+Frontend Tools, insanların sevdiği toolları ekleyebildiği, beğenebildiği ve kaydedebildiği bir fullstack uygulamadır. Bu uygulama, NextJS'in app-dir özelliğini kullanarak geliştirilmiştir.
 
-First, run the development server:
+## Özellikler
+
+- Kullanıcılar NextAuth uygulamasıyla giriş yapabilir.
+- Kullanıcılar sevdikleri toolları ekleyebilir, beğenebilir ve kaydedebilir.
+- Kullanıcılar dashboard sayfasında yarattığı, beğendiği ve kaydettiği toolları görüntüleyebilir.
+
+## Kullanılan Teknolojiler
+
+- NextJS 13: Next.js'in son sürümünü kullanarak uygulamayı geliştirdik.
+- TypeScript: Uygulama, güçlü bir tip sistemi ile TypeScript ile yazılmıştır.
+- Hookform: Form işlemleri için Hookform'u kullandık.
+- Next-Auth: Kullanıcı kimlik doğrulama ve yetkilendirme için NextAuth'ı kullandık.
+- Prisma: Veritabanı işlemleri için Prisma ORM kullanıldı.
+- DaisyUI: UI bileşenleri için DaisyUI kullanıldı.
+- ESLint: Kod kalitesini sağlamak için ESLint kullanıldı.
+- clsx: CSS sınıfları oluşturmak için clsx kullanıldı.
+- React Icons: İkonlar için React Icons kullanıldı.
+- React Toastify: Bildirimler için React Toastify kullanıldı.
+- Tailwind CSS: UI tasarımı için Tailwind CSS kullanıldı.
+- Zod: Veri doğrulama için Zod kullanıldı.
+
+## Kurulum
+
+1. Depoyu bilgisayarınıza klonlayın:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/ercumentlacin/next13-frontend-tools.git
+```
+
+2. Proje dizinine gidin
+```bash
+cd next13-frontend-tools
+```
+
+3. Gerekli bağımlılıkları yüklemek için aşağıdaki komutu çalıştırın
+```bash
+pnpm install
+```
+
+4. Ortam değişkenlerini yapılandırın
+  - .env.example dosyasını kopyalayın ve .env olarak adlandırın.
+  - .env dosyasını düzenleyerek gerekli ortam değişkenlerini belirtin.
+
+5. Uygulamayı başlatmak için aşağıdaki komutu çalıştırın
+
+```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Tarayıcınızda http://localhost:3000 adresine gidin ve uygulamayı kullanmaya başlayın
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Katkıda Bulunma
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Katkıda bulunmak için önerilerinizi veya sorularınızı issue tracker üzerinden iletebilirsiniz. Ayrıca, projenizi çatallayarak ve pull request göndererek de katkıda bulunabilirsiniz.
 
-## Learn More
+## Lisans
 
-To learn more about Next.js, take a look at the following resources:
+Bu proje MIT lisansı altında lisanslanmıştır.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Bu readme dosyasını projenizin ana dizinine ekleyebilirsiniz ve projenizi açıklayan bilgileri ekleyebilirsiniz. Unutmayın, README.md dosyası projenizin kullanıcılarınıza ve diğer geliştiricilere projeniz hakkında detaylı bilgi sağlamak için önemli bir kaynaktır.
