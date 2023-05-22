@@ -1,3 +1,5 @@
+import prisma from "@/app/libs/prismadb";
+
 export default async function getTools({
   limit = 6,
   skip = 0,
