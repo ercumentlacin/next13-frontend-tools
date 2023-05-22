@@ -1,3 +1,5 @@
+import prisma from "@/app/libs/prismadb";
+
 export default async function getToolsByUserId(userId?: string) {
   "use server";
   const tools = await prisma.tool.findMany({

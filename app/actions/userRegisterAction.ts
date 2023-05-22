@@ -18,7 +18,6 @@ export default async function userRegisterAction(data: FormData) {
     data: {
       email,
       password: hashedPassword,
-      username,
     },
   });
 

@@ -1,6 +1,6 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import bcryptjs from "bcryptjs";
-import NextAuth, { AuthOptions } from "next-auth";
+import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
@@ -14,6 +14,8 @@ if (!process.env.GOOGLE_CLIENT_SECRET) {
 
 if (!process.env.GITHUB_ID) throw new Error("Missing GITHUB_ID");
 if (!process.env.GITHUB_SECRET) throw new Error("Missing GITHUB_SECRET");
+
+if (typeof prisma === "undefined" || !prisma) throw new Error("Missing prisma");
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -36,7 +38,7 @@ export const authOptions: AuthOptions = {
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Missing credentials");
         }
-        const user = await prisma.user.findUnique({
+        const user = await prisma?.user.findUnique({
           where: {
             email: credentials.email,
           },
@@ -75,4 +77,3 @@ export const authOptions: AuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
-export default NextAuth(authOptions);

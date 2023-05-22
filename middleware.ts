@@ -1,20 +1,29 @@
+import { getToken } from "next-auth/jwt";
+import { withAuth } from "next-auth/middleware";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import getCurrentUser from "./app/actions/getCurrentUser";
 
-// This function can be marked `async` if using `await` inside
-export async function middleware(request: NextRequest) {
-  const currentUser = await getCurrentUser();
-  const { pathname } = request.nextUrl;
-  if (
-    (pathname.startsWith("/enter") || pathname.startsWith("/new-user")) &&
-    !!currentUser
-  ) {
-    return NextResponse.rewrite(new URL("/", request.url));
+export default withAuth(
+  async function middleware(req: NextRequest) {
+    const token = await getToken({ req });
+    const isAuth = !!token;
+    console.log("🚀 ~ file: middleware.ts:13 ~ middleware ~ isAuth:", isAuth);
+    const isAuthPage =
+      req.nextUrl.pathname.startsWith("/enter") ||
+      req.nextUrl.pathname.startsWith("/new-user");
+
+    if (isAuthPage && isAuth) {
+      return NextResponse.redirect(new URL("/", req.url));
+    }
+  },
+  {
+    callbacks: {
+      async authorized() {
+        // This is a work-around for handling redirect on auth pages.
+        // We return true here so that the middleware function above
+        // is always called.
+        return true;
+      },
+    },
   }
-}
-
-// See "Matching Paths" below to learn more
-export const config = {
-  matcher: ["/enter", "/new-user"],
-};
+);
